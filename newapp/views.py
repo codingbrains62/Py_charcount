@@ -1,9 +1,10 @@
+import os
+
 from django.shortcuts import render
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-import os
-from .file_proccessing import parse_and_display_info
 
+from .utils.file_proccessing import FileExploration
 
 
 def upload_file(request):
@@ -13,7 +14,10 @@ def upload_file(request):
             fs = FileSystemStorage()
             filename = fs.save(uploaded_file.name, uploaded_file)
             filepath = os.path.join(settings.MEDIA_ROOT, filename)
-            file_info = parse_and_display_info(filepath)
+            print(f"filepath>>>>>{filepath}", flush=True)
+            explore = FileExploration(filepath)
+            file_info = explore.parse_and_display_info()
+            print(f"file_info>>>>>{file_info}", flush=True)
             return render(request, 'file_info.html', {'file_info': file_info})
         return render(request, 'upload.html')
     except:
@@ -25,7 +29,6 @@ def detailed(request):
         library = request.POST.get('library')
         num_words = request.POST.get('num_words')
         num_chars = request.POST.get('num_chars')
-
         data = {
             'library': library,
             'num_words': num_words,
@@ -34,6 +37,3 @@ def detailed(request):
         return render(request, 'detailed_info.html', {'data': data})
     else:
         return render(request, 'error_page.html')
-
-
-

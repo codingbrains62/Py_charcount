@@ -1,0 +1,14 @@
+version: '2.2'
+
+services:
+  main_backend:
+      build: .  # path is relative to docker-compose.yml location
+      container_name: main_backend
+      volumes:
+         - .:/src/app # mount point
+      # env_file:
+      #    - .env
+      command: python /src/app/manage.py runserver 0.0.0.0:8000
+      ports:
+         - "8000:8000"
+      restart: unless-stopped
