@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .card {
+            width: 350px;
+            height: 450px;
+            background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+            border-radius: 20px;
+            transition: all .3s;
+            margin-top: 80px;
+            margin-left: 500px;
+        }
+
+        .card2 {
+            width: 350px;
+            height: 450px;
+            background-color: #1a1a1a;
+            border-radius: 3px;
+            transition: all .2s;
+        }
+
+        .card2:hover {
+            transform: scale(0.98);
+            border-radius: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+        }
+
+        .head {
+            color: white;
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .datas {
+            color: white;
+            margin-left: 15px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body style="background: #b5c34ad2;">
+
+    <!-- detailed_info.html -->
+
+    <div class="card">
+        <div class="card2">
+            <h1 class="head">Final Result</h1>
+            <pre class="datas"><b>Library Name : </b> {{ data.library }} </pre>
+            <pre class="datas"><b>Num of Words : </b> {{ data.num_words }} </pre>
+            <pre class="datas"><b>Num of Chars : </b> {{ data.num_chars }} </pre>
+        </div>
+    </div>
+
+</body>
+
+</html>

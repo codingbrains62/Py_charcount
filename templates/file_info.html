@@ -1,0 +1,71 @@
+<!-- <h1>File Information</h1> -->
+<!-- <pre>{{ file_info }}</pre> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .card {
+            width: 390px;
+            height: 454px;
+            border-radius: 30px;
+            background: #e0e0e0;
+            box-shadow: 15px 15px 30px #bebebe,
+                -15px -15px 30px #ffffff;
+            margin-left: 450px;
+            margin-top: 50px;
+        }
+
+        .head {
+            text-align: center;
+            padding-top: 30px;
+
+        }
+
+        .datas {
+            margin-left: 20px;
+            font-size: 18px;
+            padding-top: 20px;
+        }
+
+        .btn {
+            height: 35px;
+            width: 250px;
+            background: lightgreen;
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: 70px;
+            border: none;
+            border-radius: 7px;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: rgba(26, 25, 25, 0.887);">
+
+    <div class="card">
+        <h1 class="head">File Information</h1>
+        <pre class="datas"><b>Filename : </b> {{ file_info.filename }} </pre>
+        <pre class="datas"><b>Filetype : </b> {{ file_info.filetype }} </pre>
+        <pre class="datas"><b>Language : </b> {{ file_info.language }} </pre>
+        <br><br><br>
+        <form action="{% url 'detailed' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="library" value="{{file_info.library}}">
+            <input type="hidden" name="num_words" value="{{file_info.num_words}}">
+            <input type="hidden" name="num_chars" value="{{file_info.num_chars}}">
+            <button type="submit" class="btn">Show the Final Result</button>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
